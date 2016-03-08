@@ -48,13 +48,11 @@ andMath::vec2 andMath::vec2::fromAngle(float angle) {
 		if (a < b) { return a; }
 		else       { return b; }
 	}
-
 	andMath::vec2 andMath::max(const vec2 & a, const vec2 & b)
 	{
 		if (a > b) { return a; }
 		else       { return b; }
 	}
-
 	andMath::vec2 andMath::clamp(const vec2 & a, const vec2 & min, const vec2 & max)
 	{
 		if (a > max) { return max; }
