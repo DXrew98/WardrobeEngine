@@ -1,4 +1,4 @@
-#include "vmmath.h"
+#include "VMMath.h"
 
 float pointPlaneDistance(const Circle &circle, const Plane & plane)
 {

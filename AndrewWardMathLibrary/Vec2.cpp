@@ -1,6 +1,10 @@
 #include "vmmath.h"
 
-		andMath::vec2 andMath::vec2::fromAngle(float angle) {
+float & andMath::vec2::operator[](unsigned idx) { return v[idx]; }
+
+float andMath::vec2::operator[](unsigned idx) const { return v[idx]; }
+
+andMath::vec2 andMath::vec2::fromAngle(float angle) {
 			vec2 c;
 			c.x = cosf(angle);
 			c.y = sinf(angle);

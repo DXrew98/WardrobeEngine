@@ -1,6 +1,10 @@
 #include "vmmath.h"
 
 
+float & andMath::vec3::operator[](unsigned idx) { return v[idx]; }
+
+float andMath::vec3::operator[](unsigned idx) const { return v[idx]; }
+
 // shoot a vector for a determined angle
 float andMath::vec3::mag()		const { return sqrtf(x * x + y * y + z * z); }
 andMath::vec3 andMath::vec3::normal()	const {

@@ -11,6 +11,9 @@ namespace andMath {
 			float v[2];
 			struct { float x, y; };
 		};
+		float &operator[](unsigned idx);
+		float  operator[](unsigned idx) const;
+
 		static vec2 fromAngle(float angle);// shoot a vector for a determined angle
 		//unary operations
 		float mag()		const;

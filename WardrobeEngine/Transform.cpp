@@ -61,5 +61,5 @@ vec2 Transform::getRight() const{
 }
 
 vec2 Transform::getUp() const{
-	return andMath::perp(vec2::fromAngle(angle));
+	return vec2::fromAngle(angle).perp;
 }

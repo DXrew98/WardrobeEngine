@@ -19,6 +19,8 @@ namespace andMath {
 				union { vec3 c3; vec2 pos; };
 			};
 		};
+		vec3  operator[](unsigned idx) const;
+		vec3 &operator[](unsigned idx);
 		static mat3 identity();
 	};
 

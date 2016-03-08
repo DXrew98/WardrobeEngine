@@ -1,4 +1,5 @@
 #pragma once
+#include "Vec2.h"
 
 //FLT_EPSILON
 namespace andMath {
@@ -7,16 +8,17 @@ namespace andMath {
 			float v[3];
 			struct { float x, y, z; };
 			struct { float r, g, b; };
+			vec2 xy;
 		};
+		float &operator[](unsigned idx);
+		float  operator[](unsigned idx) const;
+
 		float mag()		const;
 		vec3 normal()	const;
 		void normalize();
 		vec3 operator-()const;
 
-		static vec3 make(float x, float y, float z)
-		{
-			return{ x,y,z };
-		}
+		static vec3 make(float x, float y, float z) { return{ x,y,z }; }
 };
 
 
