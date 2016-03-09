@@ -121,8 +121,11 @@ CollisionData iTest(const Circle & circle, const Plane & plane)
 	CollisionData cd = { false };
 	float lhs = dot(plane.normal, (circle.pos - plane.pos));
 	float rhs = circle.radius;
+	
+	if (lhs <= rhs) { cd.inOverlap = true; }
+	cd.penetrationDepth = rhs - lhs;
+	cd.collsionNormal = plane.normal;
 
-	if (lhs <= rhs) { cd = { true, lhs }; }
 	return cd;
 }
 
@@ -135,7 +138,11 @@ CollisionData iTest(const Ray & ray, const Plane & plane)
 	float rayPlaneTest = (dot(plane.normal, localDis) / dot(plane.normal, rayLength) * -1);
 
 	if (dot(plane.normal, rayLength) * -1 > 0) { return cd; }
-	else if (rayPlaneTest >= 0 && rayPlaneTest <= 12) { cd = { true }; }
+	else if (rayPlaneTest >= 0 && rayPlaneTest <= ray.len) { 
+		cd.inOverlap = true; 
+		cd.penetrationDepth = ray.len - rayPlaneTest;
+		cd.collsionNormal = ray.dir.normal() * -1;
+	}
 	return cd;
 }
 
