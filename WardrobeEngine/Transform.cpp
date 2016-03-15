@@ -26,10 +26,10 @@ void Transform::setParent(Transform *a_parent){
 	if (e_parent)
 		e_parent->e_children.remove(this);
 
-	if (e_parent)
+	if (a_parent)
 		a_parent->e_children.push_front(this);
 
-	e_parent = a_parent
+	e_parent = a_parent;
 }
 
 void Transform::setPosition(const vec2 &a_pos){
@@ -61,5 +61,5 @@ vec2 Transform::getRight() const{
 }
 
 vec2 Transform::getUp() const{
-	return vec2::fromAngle(angle).perp;
+	return vec2::fromAngle(angle).perp();
 }

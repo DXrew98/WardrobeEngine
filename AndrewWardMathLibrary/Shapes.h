@@ -1,5 +1,6 @@
 #pragma once
-#include "VMMath.h"
+#include "Vec2.h"
+#include "Mat3.h"
 
 using andMath::vec2;
 using andMath::vec3;
@@ -18,7 +19,7 @@ inline vec2 AABB::min() const { return pos - halfPoint; }
 inline vec2 AABB::max() const { return pos + halfPoint; }
 
 //Shape conversions to mat3s 
-ConvexHull	operator*(const mat3 &matrix, const ConvexHull &shape);
+//ConvexHull	operator*(const mat3 &matrix, const ConvexHull &shape);
 
 Ray			operator*(const mat3 &matrix, const Ray &ray);
 Plane		operator*(const mat3 &matrix, const Plane &plane);

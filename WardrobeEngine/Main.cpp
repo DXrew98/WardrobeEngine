@@ -2,6 +2,13 @@
 
 int main() {
 
-	system("pause");
+	auto &window = Window::instance();
+
+	window.init();
+
+	while (window.step()) {
+		system("pause");
+	}
+	window.terminte();
 	
 }

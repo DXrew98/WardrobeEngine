@@ -2,7 +2,7 @@
 #include <cmath>
 #include <vector>
 
-ConvexHull operator*(const mat3 & matrix, const ConvexHull & shape)	{ return matrix * shape; }
+//ConvexHull operator*(const mat3 & matrix, const ConvexHull & shape)	{ return matrix * shape; }
 
 Ray operator*(const mat3 & matrix, const Ray & ray){
 

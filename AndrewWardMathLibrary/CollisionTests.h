@@ -1,18 +1,19 @@
 #pragma once
-#include "VMMath.h"
 #include "Shapes.h"
+#include "Vec2.h"
 
-	//infor needed for collisions
+
+//infor needed for collisions
 struct CollisionData{
 	bool	inOverlap;
 	float	penetrationDepth;
-	vec2	collsionNormal;
-	vec2	pointOfContact;
+	andMath::vec2	collisionNormal;
+	andMath::vec2	pointOfContact;
 };
 
 //distance formuals
 float pointPlaneDistance(const Circle &circle,	const Plane   &plane);
-float rayPlaneDistance	(const Ray   &ray,		const Plane   &plane);
+float rayPlaneDistance	(const Ray    &ray,		const Plane   &plane);
 
 //basic tests 
 CollisionData iTest(const AABB		 &rectA,	const AABB     &rectb);

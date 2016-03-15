@@ -23,8 +23,8 @@ CollisionData iTest(const AABB & rectA, const AABB & rectB)
 	float collisionY = abs( up ) < down ?  up   : down;
 	cd.penetrationDepth = fminf(collisionX, collisionY);
 
-	if (collisionX < collisionY) cd.collsionNormal = collisionX == right ? vec2 RIGHT : vec2 LEFT;
-	else						 cd.collsionNormal = collisionY == up    ? vec2 UP    : vec2 DOWN;
+	if (collisionX < collisionY) cd.collisionNormal = collisionX == right ? vec2 RIGHT : vec2 LEFT;
+	else						 cd.collisionNormal = collisionY == up    ? vec2 UP    : vec2 DOWN;
 
 	return cd;
 }
@@ -46,7 +46,7 @@ CollisionData iTest(const AABB & rect, const Circle & circle)
 
 	cd.penetrationDepth = radius - dist;
 	if (dist < radius) cd.inOverlap = true;
-	cd.collsionNormal = (circle.pos - cd.pointOfContact).normal();
+	cd.collisionNormal = (circle.pos - cd.pointOfContact).normal();
 
 	return cd;
 }
@@ -77,7 +77,7 @@ CollisionData iTest(const AABB & rect, const Ray & ray)
 	
 	cd.penetrationDepth = ray.len - tmin;
 	cd.inOverlap = cd.penetrationDepth >= 0 && tmin <= tmax && tmin > 0;
-	cd.collsionNormal   = (t1min > t2min) ? n1 : n2;
+	cd.collisionNormal   = (t1min > t2min) ? n1 : n2;
 	
 	return cd;
 }
@@ -90,7 +90,7 @@ CollisionData iTest(const AABB & rect, const Plane & plane)
 
 	cd.penetrationDepth = rectPlaneTest - dot(plane.normal, localDis);
 	if (dot(plane.normal, localDis) <= rectPlaneTest) cd.inOverlap = true;
-	cd.collsionNormal = plane.normal;
+	cd.collisionNormal = plane.normal;
 
 	return cd;
 }
@@ -103,11 +103,11 @@ CollisionData iTest(const Circle & circleA, const Circle & circleB)
 
 	cd.penetrationDepth = (radius - dist);
 	if (dist < radius) cd.inOverlap = true;
-	cd.collsionNormal = (circleB.pos - circleA.pos).normal();
+	cd.collisionNormal = (circleB.pos - circleA.pos).normal();
 
 	return cd;
 }
-CollisionData iTest(const Circle & circle, const Ray & ray)
+CollisionData iTest(const Circle & circle, const Ray & ray) //still needs to be done
 {
 	CollisionData cd = { false, 0, 0, 0 };
 
@@ -119,7 +119,7 @@ CollisionData iTest(const Circle & circle, const Ray & ray)
 
 	cd.penetrationDepth = 0;
 	if (circleTest <= circle.radius * circle.radius) cd.inOverlap = true;
-	cd.collsionNormal = { 0, 0 };
+	cd.collisionNormal = { 0, 0 };
 
 	return cd;
 }
@@ -131,7 +131,7 @@ CollisionData iTest(const Circle & circle, const Plane & plane)
 	
 	cd.penetrationDepth = rhs - lhs;
 	if (lhs <= rhs) { cd.inOverlap = true; }
-	cd.collsionNormal = plane.normal;
+	cd.collisionNormal = plane.normal;
 
 	return cd;
 }
@@ -148,7 +148,7 @@ CollisionData iTest(const Ray & ray, const Plane & plane)
 	else if (rayPlaneTest >= 0 && rayPlaneTest <= ray.len) { 
 		cd.penetrationDepth = ray.len - rayPlaneTest;
 		cd.inOverlap = true; 
-		cd.collsionNormal = ray.dir.normal() * -1;
+		cd.collisionNormal = ray.dir.normal() * -1;
 	}
 	return cd;
 }
