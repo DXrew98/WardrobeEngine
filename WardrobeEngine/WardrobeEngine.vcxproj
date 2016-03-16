@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="cRenderUtils.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Assets.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionDetection.h" />
     <ClInclude Include="cRenderUtils.h" />
@@ -146,9 +148,11 @@
     <ClInclude Include="MathDependancies.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="PlayerSystem.h" />
+    <ClInclude Include="RenderingSystem.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="RigidBodyDynamics.h" />
     <ClInclude Include="sfwdraw.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Transform.h" />

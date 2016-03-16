@@ -7,8 +7,8 @@ void drawMatrix(const mat3 & matrix)
 	vec2 up		= matrix[1].xy;
 	vec2 right	= matrix[0].xy;
 
-	sfw::drawLine(pos.x, pos.y, right.x, right.y, RED);
-	sfw::drawLine(pos.x, pos.y, up.x,    up.y,    GREEN);
+	sfw::drawLine(pos.x, pos.y, pos.x+right.x, pos.y+right.y, RED);
+	sfw::drawLine(pos.x, pos.y, pos.x+up.x, pos.y+up.y,    GREEN);
 }
 
 void drawVector(const mat3 & matrix, const vec2 & vector, unsigned TINT)
@@ -31,7 +31,7 @@ void drawAABB(const AABB & aabb, unsigned TINT = BLUE)
 
 void drawCircle(const Circle & circle, unsigned TINT = BLUE)
 {
-	sfw::drawCircle(circle.pos.x, circle.pos.y, 5, TINT = BLUE);
+	sfw::drawCircle(circle.pos.x, circle.pos.y, circle.radius, 9, TINT);
 }
 
 void drawRay(const Ray & ray, unsigned TINT = BLUE)

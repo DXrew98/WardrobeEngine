@@ -1,5 +1,6 @@
-#include "vmmath.h"
+#include "Vec3.h"
 
+#define FLT_EPSILON 0.00001
 
 float & andMath::vec3::operator[](unsigned idx) { return v[idx]; }
 

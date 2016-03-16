@@ -19,7 +19,9 @@ struct mat4 {
 		static mat4 identity();
 		void setBLock2x2(int row, int col, mat2 a);
 		mat2 getBlock2x2(int row, int col) const;
-	};
+		static mat4 mat3to4(const float *m, float z);
+	};	
+
 	
 
 	mat4 transpose(const mat4 &a);

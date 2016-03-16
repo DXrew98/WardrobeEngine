@@ -1,5 +1,7 @@
 #include "vmmath.h"
 
+
+
 andMath::mat4 andMath::mat4::identity()
 {
 	mat4 n;
@@ -24,6 +26,17 @@ andMath::mat2 andMath::mat4::getBlock2x2(int row, int col) const
 		for (int j = 0; j < 2; ++j)
 			n.mm[i][j] = mm[i + col][j + row];
 	return n;
+}
+
+andMath::mat4 andMath::mat4::mat3to4(const float * m, float z)
+{
+	return{
+
+		m[0], m[1], 0, m[2],
+		m[3], m[4], 0, m[5],
+		  0,    0,  0,   0,
+		m[6], m[7], z, m[8]
+	};
 }
 
 andMath::mat4 andMath::transpose(const mat4 & a)

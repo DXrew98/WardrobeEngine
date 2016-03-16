@@ -1,4 +1,13 @@
-#include "VMMath.h"
+
+#include "Shapes.h"
+#include "CollisionTests.h"
+#include "Vec2.h"
+#include "Extra.h"
+
+#define UP		{ 0,  1 }
+#define DOWN	{ 0, -1 }
+#define RIGHT	{ 1,  0 }
+#define LEFT	{ -1, 0 }
 
 float pointPlaneDistance(const Circle &circle, const Plane & plane)
 {

@@ -5,6 +5,7 @@
 #include "Transform.h"
 #include "LifeSpan.h"
 #include "PlayerController.h"
+#include "Sprite.h"
 
 struct Entity : GCData<Entity> {
 
@@ -13,6 +14,7 @@ struct Entity : GCData<Entity> {
 	Handle<Collider > collider;
 	Handle<Lifespan> lifespan;
 	Handle<PlayerController> controller;
+	Handle<Sprite> sprite;
 
 	void onFree() {
 		Transform::free(transform.index);
@@ -20,5 +22,6 @@ struct Entity : GCData<Entity> {
 		Collider ::free(collider .index);
 		Lifespan ::free(lifespan .index);
 		PlayerController::free(controller.index);
+		Sprite::free(sprite.index);
 	}
 };

@@ -11,7 +11,7 @@ struct Factory {
 		e->transform = Transform::make();
 
 		e->collider->circle.radius = radius;
-		e->collider->shape = Collider:::e_Circle;
+		e->collider->shape = Collider::e_Circle;
 		e->rigidbody->mass = mass;
 		e->rigidbody->vel = vel;
 		e->transform->setPosition(pos);

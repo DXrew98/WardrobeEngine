@@ -1,8 +1,9 @@
-#include "vmmath.h"
+#include "Mat3.h"
+#include "Vec3.h"
 
-vec3 andMath::mat3::operator[](unsigned idx) const { return c[idx]; }
+andMath::vec3 andMath::mat3::operator[](unsigned idx) const { return c[idx]; }
 
-vec3 & andMath::mat3::operator[](unsigned idx) { return c[idx]; }
+andMath::vec3 & andMath::mat3::operator[](unsigned idx) { return c[idx]; }
 
 andMath::mat3 andMath::mat3::identity()
 {

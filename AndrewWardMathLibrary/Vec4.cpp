@@ -1,4 +1,6 @@
-#include "vmmath.h"
+#include "Vec4.h"
+
+#define FLT_EPSILON 0.00001
 
 float andMath::vec4::mag()		const { return sqrtf(x * x + y * y + z * z + w * w); }
 andMath::vec4 andMath::vec4::normal()	const {

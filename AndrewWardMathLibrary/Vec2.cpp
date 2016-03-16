@@ -1,4 +1,7 @@
-#include "vmmath.h"
+#include "Vec2.h"
+
+#define PI 3.141592654
+#define FLT_EPSILON 0.00001
 
 float & andMath::vec2::operator[]	(unsigned idx) { return v[idx]; }
 

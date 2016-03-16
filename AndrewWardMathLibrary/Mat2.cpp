@@ -1,4 +1,5 @@
-#include "vmmath.h"
+#include "Mat2.h"
+#include "Vec2.h"
 
 andMath::mat2 andMath::mat2::identity()
 {
