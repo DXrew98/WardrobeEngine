@@ -12,7 +12,8 @@ struct Handle {
 	T *operator->()			{ return &GCData <T> ::at(index); }
 	T *operator->() const	{ return &GCData <T> ::at(index); }
 
-	T *operator* () const	{ return  GCData <T> ::at(index); }
+	T operator* () const	{ return  GCData <T> ::at(index); }
+	T &operator* ()		    { return  GCData <T> ::at(index); }
 
 	T *operator& ()			{ return &GCData <T> ::at(index); }
 
@@ -27,7 +28,7 @@ class GCData {
 	bool isVacant;
 
 	//Queue used to keep track of vacant spaces
-	static std::queue <int> &getQueue() { static std::queue <int> q; retunr q; }
+	static std::queue <int> &getQueue() { static std::queue <int> q; return q; }
 
 public:
 	//Get global Data

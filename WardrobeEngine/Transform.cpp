@@ -15,8 +15,8 @@ Transform::~Transform(){
 
 mat3 Transform::getGlobalTransform() const{
 	return
-		(e_parent ? e_parent->getGlobalTransform() : mat3::identity())
-
+		(e_parent ? e_parent->getGlobalTransform() : 
+		  mat3::identity())
 		* andMath::translate(pos)
 		* andMath::scale(scale)
 		* andMath::rotate(angle);
