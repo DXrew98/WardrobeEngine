@@ -5,7 +5,7 @@
 void Asset::loadTexture(const std::string & name, const char * path)
 {
 
-	assert(Window::instance().isInitialized & "Window is not initialized");
+	assert(Window::instance().isInitialized() && "Window is not initialized");
 	Texture temp;
 	//todo: error handling
 	temp.handle = sfw::loadTextureMap(path);

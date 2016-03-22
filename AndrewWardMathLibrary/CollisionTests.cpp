@@ -3,6 +3,7 @@
 #include "CollisionTests.h"
 #include "Vec2.h"
 #include "Extra.h"
+#include <iostream>
 
 #define UP		{ 0,  1 }
 #define DOWN	{ 0, -1 }
@@ -21,12 +22,12 @@ float rayPlaneDistance(const Ray & ray, const Plane & plane)
 CollisionData iTest(const AABB & rectA, const AABB & rectB)
 {
 	CollisionData cd = { false, 0, 0, 0 };
-	const float left	= rectB.min().x - rectA.max().x;
-	const float right	= rectB.max().x - rectA.min().x;
-	const float up		= rectB.min().y - rectA.max().y;
-	const float down	= rectB.max().y - rectA.min().y;
+	const float left	= rectB.max().x - rectA.min().x;
+	const float right	= rectA.max().x - rectB.min().x;
+	const float up		= rectB.max().y - rectA.min().y;
+	const float down	= rectA.max().y - rectB.min().y;
 
-	if (left < 0.0f || right  > 0.0f || up < 0.0f || down > 0.0f) cd.inOverlap = true;
+	if (left > 0.0f && right  > 0.0f && up > 0.0f && down > 0.0f) cd.inOverlap = true;
 
 	float collisionX = abs(left) < right ? left : right;
 	float collisionY = abs( up ) < down ?  up   : down;
@@ -34,7 +35,7 @@ CollisionData iTest(const AABB & rectA, const AABB & rectB)
 
 	if (collisionX < collisionY) cd.collisionNormal = collisionX == right ? vec2 RIGHT : vec2 LEFT;
 	else						 cd.collisionNormal = collisionY == up    ? vec2 UP    : vec2 DOWN;
-
+	if (cd.inOverlap == true) std::cout << "hitAABB" << std::endl;
 	return cd;
 }
 CollisionData iTest(const AABB & rect, const Circle & circle)
@@ -50,11 +51,15 @@ CollisionData iTest(const AABB & rect, const Circle & circle)
 		else															   cd.pointOfContact.y = dY;
 	}
 
-	float dist =	pow(circle.pos.x - cd.pointOfContact.x, 2) + pow(circle.pos.y - cd.pointOfContact.y, 2);
-	float radius =	pow(circle.radius, 2);
+	float dist = (cd.pointOfContact - circle.pos).mag();//circle.pos.x - cd.pointOfContact.x + circle.pos.y - cd.pointOfContact.y;
+	float radius =	circle.radius;
 
 	cd.penetrationDepth = radius - dist;
 	if (dist < radius) cd.inOverlap = true;
+	if (cd.inOverlap == true)
+	{
+		std::cout << "hitAABB" << std::endl;
+	}
 	cd.collisionNormal = (circle.pos - cd.pointOfContact).normal();
 
 	return cd;
@@ -106,13 +111,19 @@ CollisionData iTest(const AABB & rect, const Plane & plane)
 
 CollisionData iTest(const Circle & circleA, const Circle & circleB)
 {
-	CollisionData cd = { false, 0, 0, 0 };
-	float dist =	pow(circleB.pos.x - circleA.pos.x, 2) + pow(circleB.pos.y - circleA.pos.y, 2);
+
+	CollisionData cd = { false, 0, 0, 0 }; 
+	float dist2 =	pow(circleB.pos.x - circleA.pos.x, 2) + pow(circleB.pos.y - circleA.pos.y, 2);
 	float radius =	pow(circleB.radius + circleA.radius, 2);
 
-	cd.penetrationDepth = (radius - dist);
-	if (dist < radius) cd.inOverlap = true;
+	
+
+	cd.penetrationDepth = circleB.radius + circleA.radius
+							- (circleB.pos - circleA.pos).mag();
+	if (dist2 < radius) cd.inOverlap = true;
 	cd.collisionNormal = (circleB.pos - circleA.pos).normal();
+
+	//if (cd.inOverlap == true) { std::cout << "Hit" << std::endl; }
 
 	return cd;
 }

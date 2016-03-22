@@ -22,34 +22,42 @@ CollisionData EvaluCollision(const Transform aTransfrom, const Collider aCollide
 	case Collider::e_Circle: 
 		 cd = iTest(transformLhs.getGlobalTransform() * colliderLhs.circle, 
 				    transformRhs.getGlobalTransform() * colliderRhs.circle);
+		 break;
 
 	case Collider::e_Circle | Collider::e_Ray:
 		 cd = iTest(transformLhs.getGlobalTransform() * colliderLhs.circle,
 					transformRhs.getGlobalTransform() * colliderRhs.ray);
+		 break;
 
 	case Collider::e_Circle | Collider::e_Plane:
 		 cd = iTest(transformLhs.getGlobalTransform() * colliderLhs.circle,
 					transformRhs.getGlobalTransform() * colliderRhs.plane);
+		 break;
 
 	case Collider::e_AABB:
 		 cd = iTest(transformLhs.getGlobalTransform() * colliderLhs.aabb,
 					transformRhs.getGlobalTransform() * colliderRhs.aabb);
+		 break;
 
 	case Collider::e_AABB | Collider::e_Circle:
 		cd = iTest(transformLhs.getGlobalTransform() * colliderLhs.aabb,
 			transformRhs.getGlobalTransform() * colliderRhs.circle);
+		break;
 
 	case Collider::e_AABB | Collider::e_Ray:
 		 cd = iTest(transformLhs.getGlobalTransform() * colliderLhs.aabb,
 					transformRhs.getGlobalTransform() * colliderRhs.ray);
+		 break;
 
 	case Collider::e_AABB | Collider::e_Plane:
 		 cd = iTest(transformLhs.getGlobalTransform() * colliderLhs.aabb,
 					transformRhs.getGlobalTransform() * colliderRhs.plane);
+		 break;
 
 	case Collider::e_Ray | Collider::e_Plane:
 		 cd = iTest(transformLhs.getGlobalTransform() * colliderLhs.ray,
 					transformRhs.getGlobalTransform() * colliderRhs.plane);
+		 break;
 	}
 	return cd;
 }

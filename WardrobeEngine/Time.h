@@ -1,6 +1,8 @@
 #pragma once
 #include "Window.h"
 
+#include <iostream>
+
 class Time {
 
 	bool isInit;
@@ -11,7 +13,7 @@ public:
 
 	bool init() { return isInit = Window::instance().isInitialized(); }
 	bool step() { INIT_ASSERT(Time); return true; }
-	bool term() { INIT_ASSERT(Time); }
+	void term() { INIT_ASSERT(Time); }
 
 	bool isInitialized() { return isInit; }
 

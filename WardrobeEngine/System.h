@@ -5,10 +5,11 @@ class System{
 
 	virtual bool condition	(Handle<Entity> i) = 0;
 	virtual void update		(Handle<Entity> i) = 0;
-
+	virtual void onStep() {}
 public:
 	void step()
 	{
+		onStep();
 		for (unsigned i = 0; i < Entity::getData().size(); ++i)
 		{
 			if (Entity::at(i).isValid() && condition(i)) update(i);
@@ -26,6 +27,7 @@ class BinarySystem {
 public:
 	void step()
 	{
+		onStep();
 		//for each unique pair of entites 
 		for (unsigned i = 0; i < Entity::getData().size() - 1; ++i)
 			for (unsigned j = i + 1; j < Entity::getData().size(); ++j){

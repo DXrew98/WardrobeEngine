@@ -4,8 +4,8 @@
 #include <cfloat>
 #include <cmath>
 
-//#define PI 3.141592654f
-//#define DEGtoRAD PI / 180.0f
+#define PI 3.141592654f
+#define DEGtoRAD PI / 180.0f
 
 namespace andMath {
 	/*__declspec(align(32))*/ struct mat3{

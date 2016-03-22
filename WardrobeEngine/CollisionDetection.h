@@ -16,21 +16,21 @@ struct Collision {
 
 class CollisionSystem {
 
-	virtual bool condition(Collision a) = 0;
-	virtual void update(Collision a) = 0;
-	virtual void onStep() {}
+	virtual bool condition	(Collision a) = 0;
+	virtual void update		(Collision a) = 0;
+	virtual void onStep		() {}
 
 public:
-	void step()
-	{
-		for each (Collision c in Collision::getData())
-		{
-			update(c);
-		}
+	void step(){
+		
+		onStep();
+		for each (auto c in Collision::getData())
+			if(condition(c))	
+				update(c);
 	}
 };
 
-class CollisionDetectionSystem {
+class CollisionDetectionSystem : public BinarySystem {
 
 	void onStep() { Collision::getData().clear(); }
 
@@ -44,7 +44,4 @@ class CollisionDetectionSystem {
 			Collision::getData().push_back(Collision{ i, j, cd });
 		}
 	}
-	
-
-
 };

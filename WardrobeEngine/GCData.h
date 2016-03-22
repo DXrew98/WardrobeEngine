@@ -43,7 +43,7 @@ public:
 	static void free(int i) {
 
 		//Make sure its not already vacant
-		if (!at(i).isVacant) {
+		if (i > -1 && !at(i).isVacant) {
 
 			at(i).onFree(); //Allow child classes to respond with logic
 			getQueue().push(i);
@@ -62,6 +62,8 @@ public:
 
 			i = getQueue().front();
 			getQueue().pop();
+			//Handle<T> temp = i;
+			//*temp = T();
 		}
 		else {
 

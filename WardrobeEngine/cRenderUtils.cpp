@@ -17,8 +17,9 @@ void drawVector(const mat3 & matrix, const vec2 & vector, unsigned TINT)
 
 void drawPLane(const Plane & plane, unsigned TINT = BLUE)
 {
-	sfw::drawLine(plane.pos.x, plane.pos.y, (plane.pos.x + plane.normal.x) * 10, (plane.pos.y + plane.normal.y) * 10, TINT);
-	sfw::drawLine(plane.pos.x - (plane.normal.perp().x * 10), plane.pos.y - (plane.normal.perp().y * 10), plane.pos.x, plane.pos.y, TINT);
+	sfw::drawLine(plane.pos.x, plane.pos.y, plane.pos.x + plane.normal.x * 100, plane.pos.y + plane.normal.y * 100, MAGENTA);
+	sfw::drawLine(plane.pos.x - (plane.normal.perp().x * 1000), plane.pos.y - (plane.normal.perp().y * 1000), plane.pos.x, plane.pos.y, TINT);
+	sfw::drawLine(plane.pos.x + (plane.normal.perp().x * 1000), plane.pos.y + (plane.normal.perp().y * 1000), plane.pos.x, plane.pos.y, TINT);
 }
 
 void drawAABB(const AABB & aabb, unsigned TINT = BLUE)
@@ -57,5 +58,12 @@ void drawRigidBody(const Transform & trans, const Rigidbody & rb)
 
 void drawCollider(const Transform & trans, const Collider & co)
 {
-	drawCircle(trans.getGlobalTransform() * co.circle, BLUE);
+	switch (co.shape)
+	{
+	case Collider::e_Circle: drawCircle(trans.getGlobalTransform() * co.circle, BLUE); break;
+	case Collider::e_Plane: drawPLane(trans.getGlobalTransform() * co.plane, BLUE); break;
+	case Collider::e_AABB: drawAABB(trans.getGlobalTransform() * co.aabb, BLUE); break;
+	case Collider::e_Ray: drawRay(trans.getGlobalTransform() * co.ray, BLUE); break;
+	}
+	
 }
