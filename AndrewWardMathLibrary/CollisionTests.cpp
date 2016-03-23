@@ -40,6 +40,7 @@ CollisionData iTest(const AABB & rectA, const AABB & rectB)
 }
 CollisionData iTest(const AABB & rect, const Circle & circle)
 {
+
 	CollisionData cd = { false, 0, 0, 0 };
 	cd.pointOfContact = { clamp(circle.pos.x, rect.min().x, rect.max().x), clamp(circle.pos.y, rect.min().y, rect.max().y) };
 

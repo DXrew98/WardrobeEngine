@@ -10,5 +10,16 @@ float Time::getTotalTime()
 float Time::getDeltaTime()
 {
 	INIT_ASSERT(Time);
+
+	float dT = sfw::getDeltaTime();
+
+#ifdef DEBUG
+	// cap delta time to 1 second
+	if (dT > 1.0f)
+	{
+		dT = 1.0f;
+	}
+#endif
+
 	return sfw::getDeltaTime();
 }

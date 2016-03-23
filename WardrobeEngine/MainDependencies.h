@@ -6,8 +6,10 @@
 #include "Factory.h"
 #include "DebugDraw.h"
 #include "RigidBodyDynamics.h"
-//#include "LifetimeSystem.h"
+#include "LifetimeSystem.h"
 #include "CollisionDetection.h"
 #include "DynamicResolution.h"
-//#include "PlayerSystem.h"
+#include "PlayerSystem.h"
+#include "RenderingSystem.h"
+#include "Assets.h"
 #include <iostream>

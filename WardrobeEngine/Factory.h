@@ -47,4 +47,59 @@ struct Factory {
 		e->transform->setPosition(pos);
 		return e;
 	}
+
+	static Handle<Entity> makePlayer(vec2 pos, float acceleration,float brakeStrength, float turnSpeed) {
+
+		auto e = Entity::make();
+		e->collider = Collider::make();
+		e->rigidbody = Rigidbody::make();
+		e->transform = Transform::make();
+		e->controller = PlayerController::make();
+		e->sprite = Sprite::make();
+
+		e->sprite->assetName = "Shippie";
+		e->sprite->dim = { 72, 72 };
+
+		e->collider->circle.radius = 20;
+		e->collider->shape = Collider::e_Circle;
+		e->transform->setPosition(pos);
+		e->controller->speed = 1 * acceleration;
+		e->controller->brakeStrength = 1 * brakeStrength;
+		e->controller->turnSpeed = 1 * turnSpeed;
+		return e;
+	}
+
+	static Handle<Entity> makeTempBlock(vec2 pos, vec2 halfPointsScale, vec2 vel, float mass, float life) {
+
+		auto e = Entity::make();
+		e->collider = Collider::make();
+		e->rigidbody = Rigidbody::make();
+		e->transform = Transform::make();
+		e->lifespan = Lifespan::make();
+
+		e->collider->aabb.halfPoint = .5 * halfPointsScale;
+		e->collider->shape = Collider::e_AABB;
+		e->rigidbody->mass = mass;
+		e->rigidbody->vel = vel;
+		e->transform->setPosition(pos);
+		e->lifespan->lifetime = life;
+		return e;
+	}
+
+	static Handle<Entity> makeTempBall(vec2 pos, vec2 vel, float radius, float mass, float life) {
+
+		auto e = Entity::make();
+		e->collider = Collider::make();
+		e->rigidbody = Rigidbody::make();
+		e->transform = Transform::make();
+		e->lifespan = Lifespan::make();
+
+		e->collider->circle.radius = 1 * radius;
+		e->collider->shape = Collider::e_Circle;
+		e->rigidbody->mass = mass;
+		e->rigidbody->vel = vel;
+		e->transform->setPosition(pos);
+		e->lifespan->lifetime = life;
+		return e;
+	}
 };

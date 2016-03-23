@@ -40,8 +40,8 @@ CollisionData EvaluCollision(const Transform aTransfrom, const Collider aCollide
 		 break;
 
 	case Collider::e_AABB | Collider::e_Circle:
-		cd = iTest(transformLhs.getGlobalTransform() * colliderLhs.aabb,
-			transformRhs.getGlobalTransform() * colliderRhs.circle);
+		cd = iTest(transformLhs.getGlobalTransform() * colliderLhs.circle,
+			transformRhs.getGlobalTransform() * colliderRhs.aabb);
 		break;
 
 	case Collider::e_AABB | Collider::e_Ray:

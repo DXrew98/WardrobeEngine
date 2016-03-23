@@ -42,6 +42,7 @@ void drawRay(const Ray & ray, unsigned TINT = BLUE)
 
 void drawTransform(const Transform & trans)
 {
+	// const to extend legs
 	vec2 temp = { 30, 30 };
 	drawMatrix(trans.getGlobalTransform() * andMath::scale(temp));
 }

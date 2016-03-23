@@ -2,6 +2,7 @@
 
 #define PI 3.141592654
 #define FLT_EPSILON 0.00001
+#define DEGtoRAD PI / 180.0f
 
 float & andMath::vec2::operator[]	(unsigned idx) { return v[idx]; }
 
@@ -9,6 +10,7 @@ float andMath::vec2::operator[]		(unsigned idx) const { return v[idx]; }
 
 andMath::vec2 andMath::vec2::fromAngle(float angle) {
 			vec2 c;
+			angle *= DEGtoRAD;
 			c.x = cosf(angle);
 			c.y = sinf(angle);
 			return c;
@@ -17,8 +19,8 @@ andMath::vec2 andMath::vec2::fromAngle(float angle) {
 		float andMath::vec2::angle()			const { return atan2(y, x) * 180 / PI; }
 		andMath::vec2 andMath::vec2::perp()		const {
 			vec2 p;
-			p.x = y;
-			p.y = x * -1;
+			p.x = y * -1;
+			p.y = x;
 			return p;
 		}
 		andMath::vec2 andMath::vec2::normal()	const {
