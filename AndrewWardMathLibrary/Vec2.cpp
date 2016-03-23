@@ -45,7 +45,13 @@ andMath::vec2 andMath::vec2::fromAngle(float angle) {
 	float andMath::dot				(const vec2 &lhs, const vec2 &rhs) { return (lhs.x * rhs.x) + (lhs.y * rhs.y); }
 
 	andMath::vec2 andMath::lerp		(const vec2 &lhs, const vec2 &rhs, float t) { return lhs * t + rhs * (1 - t); }// add clamp betwwen 0-1
-	andMath::vec2 andMath::reflect	(const vec2 &lhs, const vec2 &norm) { return 2 * (dot(lhs, norm)) * norm - lhs; }
+	andMath::vec2 andMath::vec2::reflect	(/*const vec2 &lhs,*/ const vec2&norm) {
+		
+		//return 2 * (dot(lhs, norm)) * norm - lhs;
+		return{ *this - 2 * (dot(*this, norm.normal()) * norm.normal()) };
+
+
+	}
 	andMath::vec2 andMath::project	(const vec2 & a, const vec2 & b) { return dot(a, b) * b.normal(); }
 
 	andMath::vec2 andMath::min		(const vec2 & a, const vec2 & b) { return{ fminf(a.x, b.x), fminf(a.y, b.y) }; }

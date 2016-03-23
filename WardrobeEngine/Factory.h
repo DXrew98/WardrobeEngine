@@ -106,17 +106,15 @@ struct Factory {
 		return e;
 	}
 
-	static Handle<Entity> makeWorldEdge(vec2 pos, vec2 halfExtents, float mass) {
+	static Handle<Entity> makeWorldEdge(vec2 pos, vec2 halfExtents) {
 
 		auto e = Entity::make();
 		e->collider = Collider::make();
-		e->rigidbody = Rigidbody::make();
 		e->transform = Transform::make();
 		
 		e->collider->aabb.halfPoint = halfExtents;
 
 		e->collider->shape = Collider::e_AABB;
-		e->rigidbody->mass = mass;
 		e->transform->setPosition(pos);
 		return e;
 	}

@@ -18,10 +18,10 @@ int main() {
 	Factory::makeBlock({ 550,100 }, { 50, 50 }, { -60, 0 }, 1);
 	Factory::makeTempBlock({ 300, 100 }, { 30, 30 }, { 0, 0 }, 1, .1);
 
-	//Factory::makeWorldEdge({ 400, 0 }, { 400, 1 }, 100000); //bot
-	//Factory::makeWorldEdge({ 400, 600 }, { 400, 1 }, 100000); //top
-	//Factory::makeWorldEdge({ 0, 299 }, { 1, 298 }, 100000); //left
-	//Factory::makeWorldEdge({ 800, 299 }, { 1, 298 }, 100000); //right
+	Factory::makeWorldEdge({ 400, 0 }, { 400, 1 }); //bot
+	Factory::makeWorldEdge({ 400, 600 }, { 400, 1 }); //top
+	Factory::makeWorldEdge({ 0, 299 }, { 1, 298 }); //left
+	Factory::makeWorldEdge({ 800, 299 }, { 1, 298 }); //right
 
 	Factory::makePlayer({ 400,240 }, 100, 100, 35);
 

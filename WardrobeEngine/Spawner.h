@@ -3,6 +3,5 @@
 
 class Spawner : public GCData<Spawner> {
 public:
-	
 	float spawnNumber;
 };

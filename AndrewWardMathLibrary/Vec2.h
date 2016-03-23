@@ -22,12 +22,13 @@ namespace andMath {
 		vec2 normal()	const;
 		void normalize();
 		vec2 operator-()const;
+		vec2 reflect(/*const vec2 &lhs,*/ const vec2 &norm);
 	};
 	//binary operations 
 	float dot(const vec2 &lhs, const vec2 &rhs);
 
 	vec2 lerp(const vec2 &lhs, const vec2 &rhs, float t);
-	vec2 reflect(const vec2 &lhs, const vec2 &norm);
+	
 	vec2 project(const vec2 &a, const vec2 &b);
 
 	vec2 min(const vec2 &a, const vec2 &b);
