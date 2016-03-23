@@ -10,7 +10,7 @@ class StaticResolution : public CollisionSystem {
 	}
 
 	void update(Collision c) {
-
+		//used matt's code to get mine working
 		if (c.collisionData.inOverlap) {
 			Handle<Entity> staticBody;
 			Handle<Entity> dynamicBody;

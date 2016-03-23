@@ -56,6 +56,7 @@ struct Factory {
 		e->transform = Transform::make();
 		e->controller = PlayerController::make();
 		e->sprite = Sprite::make();
+		e->health = Health::make();
 
 		e->sprite->assetName = "Shippie";
 		e->sprite->dim = { 72, 72 };
@@ -69,6 +70,7 @@ struct Factory {
 		e->controller->speed = 1 * acceleration;
 		e->controller->brakeStrength = 1 * brakeStrength;
 		e->controller->turnSpeed = 100 * turnSpeed;
+
 		return e;
 	}
 

@@ -13,4 +13,5 @@
 #include "RenderingSystem.h"
 #include "Assets.h"
 #include "StaticResolution.h"
+#include "HealthSystem.h"
 #include <iostream>

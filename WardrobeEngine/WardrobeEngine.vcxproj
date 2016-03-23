@@ -138,6 +138,8 @@
     <ClInclude Include="cRenderUtils.h" />
     <ClInclude Include="DebugDraw.h" />
     <ClInclude Include="DynamicResolution.h" />
+    <ClInclude Include="Health.h" />
+    <ClInclude Include="HealthSystem.h" />
     <ClInclude Include="Spawner.h" />
     <ClInclude Include="LifeSpan.h" />
     <ClInclude Include="LifetimeSystem.h" />

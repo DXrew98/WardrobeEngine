@@ -7,6 +7,7 @@
 #include "PlayerController.h"
 #include "Sprite.h"
 #include "Spawner.h"
+#include "Health.h"
 
 struct Entity : GCData<Entity> {
 
@@ -17,6 +18,7 @@ struct Entity : GCData<Entity> {
 	Handle<PlayerController> controller;
 	Handle<Sprite> sprite;
 	Handle<Spawner> spawner;
+	Handle<Health> health;
 
 	void onFree() {
 		Transform::free(transform.index);
@@ -26,5 +28,6 @@ struct Entity : GCData<Entity> {
 		PlayerController::free(controller.index);
 		Sprite::free(sprite.index);
 		Spawner::free(spawner.index);
+		Health::free(health.index);
 	}
 };
