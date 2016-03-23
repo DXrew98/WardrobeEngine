@@ -55,7 +55,7 @@ CollisionData iTest(const AABB & rect, const Circle & circle)
 	float dist = (cd.pointOfContact - circle.pos).mag();//circle.pos.x - cd.pointOfContact.x + circle.pos.y - cd.pointOfContact.y;
 	float radius =	circle.radius;
 
-	cd.penetrationDepth = radius - dist;
+	cd.penetrationDepth = dist - radius;
 	if (dist < radius) cd.inOverlap = true;
 	if (cd.inOverlap == true)
 	{

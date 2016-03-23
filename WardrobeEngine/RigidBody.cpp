@@ -2,7 +2,7 @@
 #include "Transform.h"
 
 Rigidbody::Rigidbody() : mass(1), vel(vec2{ 0,0 }), acc(vec2{ 0,0 }), 
-						force(vec2{0,0}), drag(0), torque(0), 
+						force(vec2{0,0}), drag(.1), torque(0), 
 						angularVel(0), angularAcc(0) { }
 
 void Rigidbody::addForce(const vec2 & a)	{ force = force + a; }

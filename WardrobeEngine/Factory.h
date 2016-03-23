@@ -10,7 +10,7 @@ struct Factory {
 		e->rigidbody = Rigidbody::make();
 		e->transform = Transform::make();
 
-		e->collider->circle.radius = 1 * radius;
+		e->collider->circle.radius = radius;
 		e->collider->shape = Collider::e_Circle;
 		e->rigidbody->mass = mass;
 		e->rigidbody->vel = vel;
@@ -60,12 +60,15 @@ struct Factory {
 		e->sprite->assetName = "Shippie";
 		e->sprite->dim = { 72, 72 };
 
-		e->collider->circle.radius = 20;
-		e->collider->shape = Collider::e_Circle;
+		e->rigidbody->drag = .5;
+		e->collider->aabb.halfPoint = { 20, 20 };
+		e->collider->shape = Collider::e_AABB;
+		//e->collider->circle.radius = 20;
+		//e->collider->shape = Collider::e_Circle;
 		e->transform->setPosition(pos);
 		e->controller->speed = 1 * acceleration;
 		e->controller->brakeStrength = 1 * brakeStrength;
-		e->controller->turnSpeed = 1 * turnSpeed;
+		e->controller->turnSpeed = 100 * turnSpeed;
 		return e;
 	}
 
@@ -100,6 +103,21 @@ struct Factory {
 		e->rigidbody->vel = vel;
 		e->transform->setPosition(pos);
 		e->lifespan->lifetime = life;
+		return e;
+	}
+
+	static Handle<Entity> makeWorldEdge(vec2 pos, vec2 halfExtents, float mass) {
+
+		auto e = Entity::make();
+		e->collider = Collider::make();
+		e->rigidbody = Rigidbody::make();
+		e->transform = Transform::make();
+		
+		e->collider->aabb.halfPoint = halfExtents;
+
+		e->collider->shape = Collider::e_AABB;
+		e->rigidbody->mass = mass;
+		e->transform->setPosition(pos);
 		return e;
 	}
 };

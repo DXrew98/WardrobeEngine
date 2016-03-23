@@ -146,5 +146,11 @@
     <ClInclude Include="StaticResolution.h">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="SpawnerSystem.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

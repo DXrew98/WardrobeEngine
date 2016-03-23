@@ -12,13 +12,18 @@ int main() {
 
 	Asset::instance().loadTexture("Shippie", "../Textures/Spaceship14.png");
 	
-	Factory::makeBall({ 200, 200 }, { 0, 0 }, 20, 10);
-	Factory::makeBall({ 500, 500 }, { -20, -20 }, 20, 5);
+	Factory::makeBall({ 200, 200 }, { 0, 0 }, 20, 1);
+	Factory::makeBall({ 500, 500 }, { -30, -80 }, 20, 1);
 	Factory::makeBlock({ 110,100 }, { 20, 20 }, { 0, 0 }, 1);
-	Factory::makeBlock({ 550,100 }, { 50, 50 }, { -50, 0 }, 1);
-	Factory::makeTempBlock({ 300, 100 }, { 30, 30 }, { 0, 0 }, 1, .1f);
+	Factory::makeBlock({ 550,100 }, { 50, 50 }, { -60, 0 }, 1);
+	Factory::makeTempBlock({ 300, 100 }, { 30, 30 }, { 0, 0 }, 1, .1);
 
-	Factory::makePlayer({ 400,240 }, 100, 100, 2000);
+	//Factory::makeWorldEdge({ 400, 0 }, { 400, 1 }, 100000); //bot
+	//Factory::makeWorldEdge({ 400, 600 }, { 400, 1 }, 100000); //top
+	//Factory::makeWorldEdge({ 0, 299 }, { 1, 298 }, 100000); //left
+	//Factory::makeWorldEdge({ 800, 299 }, { 1, 298 }, 100000); //right
+
+	Factory::makePlayer({ 400,240 }, 100, 100, 35);
 
 	DebugDraw debugDraw;
 	RigidBodyDynamics rigidBodies;
@@ -26,6 +31,7 @@ int main() {
 
 	CollisionDetectionSystem collDetect;
 	DynamicResolution collResolve;
+	StaticResolution staticResolve;
 
 	PlayerCarSystem driveSystem;
 	RenderSystem render;
@@ -42,6 +48,7 @@ int main() {
 
 		collDetect.step();
 		collResolve.step();
+		staticResolve.step();
 
 		render.step();
 		debugDraw.step();

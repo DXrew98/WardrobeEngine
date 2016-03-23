@@ -12,4 +12,5 @@
 #include "PlayerSystem.h"
 #include "RenderingSystem.h"
 #include "Assets.h"
+#include "StaticResolution.h"
 #include <iostream>
